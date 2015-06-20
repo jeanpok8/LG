@@ -1,0 +1,20 @@
+
+/**
+ * @author bambanza
+ *The class sorting address contains the main method 
+ *the number of arguments should not be higher than 2 according to the class Argument reader
+ *as we sort by single column.
+ */
+public class SortingAddressBookApp {
+public static void main(String[] argv) 
+{
+		ArgumentReader argReader = ArgumentReader.instance();
+		try {argReader.argumentReaders(argv);
+		} catch (Exception e) 
+		{
+		System.out.println("Correct syntax: java SortContacts [Filename to sort] [Attribute to sort by]");
+			return;}
+		DataReadSort data = new CSVFileReader().readFile(argReader.getFileName());
+		data.sort(argReader.getsortIndex());
+		data.print();}
+	}
